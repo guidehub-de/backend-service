@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\ApiTests\\HelloTest::testPostHello":7},"times":{"App\\Tests\\ApiTests\\HelloTest::testPostHello":0.199,"App\\Tests\\UnitTests\\Entity\\HelloTest::testMessage":0.002}}
