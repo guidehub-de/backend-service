@@ -1,0 +1,66 @@
+services:
+  database:
+    image: mysql:8.2
+    environment:
+      MYSQL_ROOT_PASSWORD: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+      MYSQL_DATABASE: symfony
+    command:
+      - '--default-authentication-plugin=caching_sha2_password'
+      - '--sql_mode='
+      - '--max_allowed_packet=1073741824'
+    volumes:
+      - database:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-u", "root", "-psymfony", "ping", "-h", "localhost"]
+      timeout: 30s
+      retries: 30
+    ports:
+      - '3306:3306'
+
+  php_app:
+    build:
+      target: php_dev
+      context: .
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      XDEBUG_MODE: "off"
+      XDEBUG_CONFIG: >-
+        client_host=host.docker.internal
+        client_port=9003
+        idekey=PHPSTORM
+      PHP_IDE_CONFIG: "serverName=guidehub"
+      TIMEZONE: Europe/Berlin
+      PS1: '[guidehub-backend]::$$(pwd) # '
+    volumes:
+      - php_socket:/var/run/php
+      - ./:/var/www/html
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  webserver:
+    build:
+      target: nginx_dev
+      context: .
+    depends_on:
+      - php_app
+    # Comment out this volume in production
+    volumes:
+      - php_socket:/var/run/php
+      - ./public:/var/www/html/public
+    ports:
+      - '80:80'
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
+volumes:
+  php_socket:
+  database:
+    driver: local
