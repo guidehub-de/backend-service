@@ -53,6 +53,9 @@ jobs:
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=8.2
 
+      - name: Create JWT
+        run: php bin/console lexik:jwt:generate-keypair --skip-if-exists
+
       - name: Run api tests
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=8.2
