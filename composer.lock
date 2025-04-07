@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68870ef8cf46028ee373fe3df00c73a4",
+    "content-hash": "ddda55e8ec035b33305f8a89be2ca422",
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v4.1.5",
+            "version": "v4.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "2a765275d5df404def9fdb630f61d6fd035185b1"
+                "reference": "747186020faf9506ea5a50e4b7ab09429a7d92ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/2a765275d5df404def9fdb630f61d6fd035185b1",
-                "reference": "2a765275d5df404def9fdb630f61d6fd035185b1",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/747186020faf9506ea5a50e4b7ab09429a7d92ee",
+                "reference": "747186020faf9506ea5a50e4b7ab09429a7d92ee",
                 "shasum": ""
             },
             "require": {
@@ -216,9 +216,9 @@
             ],
             "support": {
                 "issues": "https://github.com/api-platform/core/issues",
-                "source": "https://github.com/api-platform/core/tree/v4.1.5"
+                "source": "https://github.com/api-platform/core/tree/v4.1.6"
             },
-            "time": "2025-04-03T18:00:35+00:00"
+            "time": "2025-04-07T08:48:08+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -5287,35 +5287,38 @@
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.7.2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "1c968e542d8843d7cd71de3c5c9c3ff3ad71a1db"
+                "url": "https://github.com/PHPCSStandards/composer-installer.git",
+                "reference": "4be43904336affa5c2f70744a348312336afd0da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/1c968e542d8843d7cd71de3c5c9c3ff3ad71a1db",
-                "reference": "1c968e542d8843d7cd71de3c5c9c3ff3ad71a1db",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/4be43904336affa5c2f70744a348312336afd0da",
+                "reference": "4be43904336affa5c2f70744a348312336afd0da",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0 || ^2.0",
-                "php": ">=5.3",
+                "php": ">=5.4",
                 "squizlabs/php_codesniffer": "^2.0 || ^3.1.0 || ^4.0"
             },
             "require-dev": {
                 "composer/composer": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
                 "php-parallel-lint/php-parallel-lint": "^1.3.1",
-                "phpcompatibility/php-compatibility": "^9.0"
+                "phpcompatibility/php-compatibility": "^9.0",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "composer-plugin",
             "extra": {
-                "class": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
+                "class": "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
             },
             "autoload": {
                 "psr-4": {
-                    "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
+                    "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5331,7 +5334,7 @@
                 },
                 {
                     "name": "Contributors",
-                    "homepage": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer/graphs/contributors"
+                    "homepage": "https://github.com/PHPCSStandards/composer-installer/graphs/contributors"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -5355,10 +5358,10 @@
                 "tests"
             ],
             "support": {
-                "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
-                "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
+                "issues": "https://github.com/PHPCSStandards/composer-installer/issues",
+                "source": "https://github.com/PHPCSStandards/composer-installer"
             },
-            "time": "2022-02-04T12:51:07+00:00"
+            "time": "2023-01-05T11:28:13+00:00"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -6368,33 +6371,33 @@
         },
         {
             "name": "mayflower/mo4-coding-standard",
-            "version": "v9.0.1",
+            "version": "v10.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mayflower/mo4-coding-standard.git",
-                "reference": "d77d159bdb1bda6183c5714b5f151a3c1138efb8"
+                "reference": "21e8808b48e7bdf48c950bfe1ed4508d61861e3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mayflower/mo4-coding-standard/zipball/d77d159bdb1bda6183c5714b5f151a3c1138efb8",
-                "reference": "d77d159bdb1bda6183c5714b5f151a3c1138efb8",
+                "url": "https://api.github.com/repos/mayflower/mo4-coding-standard/zipball/21e8808b48e7bdf48c950bfe1ed4508d61861e3e",
+                "reference": "21e8808b48e7bdf48c950bfe1ed4508d61861e3e",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "~0.7",
+                "dealerdirect/phpcodesniffer-composer-installer": "~0.7 || ~1.0",
                 "escapestudios/symfony2-coding-standard": "^3.10.0",
                 "php": "~7.2 || ~8.0",
-                "slevomat/coding-standard": "^8.4",
-                "squizlabs/php_codesniffer": "^3.6.2"
+                "slevomat/coding-standard": "^8.14",
+                "squizlabs/php_codesniffer": "^3.8.0"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": ">=2.19 <2.30",
-                "phan/phan": "^5.1.0",
+                "phan/phan": "^5.4.2",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^7.0",
-                "psalm/plugin-phpunit": "^0.17",
-                "vimeo/psalm": "^4.5.2"
+                "phpunit/phpunit": "^7.5.20 || ^8.5.36 || ^9.6.15",
+                "psalm/plugin-phpunit": "^0.18",
+                "vimeo/psalm": "^4.30"
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -6421,7 +6424,7 @@
                 "issues": "https://github.com/mayflower/mo4-coding-standard/issues",
                 "source": "https://github.com/mayflower/mo4-coding-standard"
             },
-            "time": "2023-12-11T21:06:29+00:00"
+            "time": "2024-12-16T20:23:12+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -10141,17 +10144,15 @@
         },
         {
             "name": "var-lab/coding-standard",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.var-lab.com/var-lab/coding-standard-php",
-                "reference": "06f307b752147dc780b80da3f1ce330434748f16"
+                "reference": "1750e9d78877b81a4473f9521bd3544f53be808e"
             },
             "require": {
-                "mayflower/mo4-coding-standard": "^9.0",
-                "php": "^8.1",
-                "slevomat/coding-standard": "^8.4",
-                "squizlabs/php_codesniffer": "^3.7"
+                "mayflower/mo4-coding-standard": "^10.0",
+                "php": "^8.1"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.28"
@@ -10161,9 +10162,9 @@
             "license": [
                 "proprietary"
             ],
-            "description": "PHP coding-standard for var-lab projects",
+            "description": "PHP coding-standard for PHP and Symfony projects",
             "homepage": "https://git.var-lab.com/var-lab.com/coding-standard-php",
-            "time": "2024-05-14T09:43:21+00:00"
+            "time": "2025-04-07T09:20:53+00:00"
         }
     ],
     "aliases": [],
@@ -10178,6 +10179,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
