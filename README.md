@@ -60,6 +60,13 @@ composer run db:recreate:dev
 docker compose up -d
 ```
 
+## Local hosts for development
+
+| Host                   | Description            |
+|------------------------|------------------------|
+| guidehub-api.localhost | Backend API & API Docs |
+| mails.localhost        | Mailpit UI             |
+
 # 🤝 Contribute
 
 We welcome contributions! To contribute:

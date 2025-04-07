@@ -54,11 +54,14 @@ services:
     ports:
       - '80:80'
 
-  mailcatcher:
-    image: schickling/mailcatcher
+  mailer:
+    image: axllent/mailpit
     ports:
       - "1025:1025"
-      - "1080:1080"
+      - "8025:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
 
 volumes:
   php_socket:
