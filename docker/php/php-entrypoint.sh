@@ -43,7 +43,7 @@ if [ -f ".env.test" ]; then
   fi
 fi
 
-php bin/console lexik:jwt:generate-keypair --skip-if-exists
+php bin/console lexik:jwt:generate-keypair --overwrite -n
 
 mkdir -p var
 chown -R www-data var
