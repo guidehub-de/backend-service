@@ -12,9 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: HelloRepository::class)]
 class Hello
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[ORM\GeneratedValue]
+    #[ORM\Id]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
