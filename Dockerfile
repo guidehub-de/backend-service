@@ -95,7 +95,7 @@ FROM base AS build_dev
 RUN apk add --no-cache bash
 
 COPY tests tests/
-COPY phpunit.dist.xml phpstan.neon ./
+COPY phpunit.xml.dist phpstan.neon ./
 COPY .env .env.test ./
 
 RUN composer install --prefer-dist --no-scripts --no-progress && \
@@ -145,7 +145,7 @@ RUN docker-php-ext-enable xdebug
 
 ARG COMPOSER_AUTH=
 
-COPY phpunit.dist.xml phpstan.neon ./
+COPY phpunit.xml.dist phpstan.neon ./
 COPY --from=build_dev /var/www/html /var/www/html
 RUN chown -R www-data var
 
