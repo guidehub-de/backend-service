@@ -6,6 +6,7 @@ namespace App\Tests\ApiTests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Message\SendEmailMessage;
+use Symfony\Component\Mime\RawMessage;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
 class SendMailTest extends ApiTestCase
@@ -20,5 +21,20 @@ class SendMailTest extends ApiTestCase
 
         $this->transport()->queue()->assertCount(1);
         $this->transport()->queue()->assertContains(SendEmailMessage::class);
+        $this->transport()->processOrFail();
+
+        self::assertEmailCount(1);
+
+        /** @var RawMessage $email */
+        $email = self::getMailerMessage();
+
+        self::assertEmailSubjectContains(
+            $email,
+            'Test-Mail',
+        );
+        self::assertEmailHtmlBodyContains(
+            $email,
+            'Hello world!',
+        );
     }
 }
