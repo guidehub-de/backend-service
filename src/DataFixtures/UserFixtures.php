@@ -7,6 +7,7 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Safe\DateTimeImmutable;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
@@ -20,6 +21,9 @@ class UserFixtures extends Fixture
     {
         $user = new User();
         $user
+            ->setLocale('de_DE')
+            ->setIsConfirmed(true)
+            ->setConfirmedAt(new DateTimeImmutable('11.03.2025'))
             ->setEmail('test@test.tld')
             ->setPassword($this->userPasswordHasher->hashPassword($user, 'test'));
 

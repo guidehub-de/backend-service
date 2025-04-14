@@ -13,7 +13,10 @@ class AuthenticationTest extends ApiTestCase
         $client = self::createClient();
 
         $response = $client->request('POST', '/auth', [
-            'headers' => ['Content-Type' => 'application/json'],
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'X-Locale'     => 'de_DE',
+            ],
             'json'    => [
                 'email'    => 'test@test.tld',
                 'password' => 'test',
