@@ -6,6 +6,9 @@ api_platform:
       JWT:
         name: Authorization
         type: header
+      X-Locale:
+        name: X-Locale
+        type: header
   defaults:
     stateless: true
     cache_headers:
@@ -15,3 +18,4 @@ api_platform:
       jsonld: ['application/ld+json']
     docs_formats:
       html: ['text/html']
+  use_symfony_listeners: true

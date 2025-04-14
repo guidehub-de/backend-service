@@ -7,8 +7,7 @@ framework:
       async: "%env(MESSENGER_TRANSPORT_DSN)%"
 
     routing:
-      App\Message\SendEmailMessage: async    # Route your messages to the transports
-    # 'App\Message\YourMessage': async
+      App\Message\SendConfirmationEmailMessage: async
 
 when@test:
   framework:

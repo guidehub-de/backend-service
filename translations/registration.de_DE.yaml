@@ -1,0 +1,8 @@
+confirmation:
+  email:
+    subject: 'Deine Registrierung auf GuideHub'
+    message: |
+      Vielen Dank für deine Registrierung bei GuideHub!
+      <br /><br />
+      Bitte klicke auf folgenden Link, um deine Registrierung zu bestätigen:<br /><br />
+      <a href="%confirmation_url%">%confirmation_url%</a>

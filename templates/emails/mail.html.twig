@@ -1,5 +1,5 @@
 {% extends 'emails/base.html.twig' %}
 
 {% block content %}
-    {{ message }}
+    {{ message|raw }}
 {% endblock %}
