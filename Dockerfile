@@ -45,7 +45,7 @@ ARG COMPOSER_AUTH=
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_AUTH=${COMPOSER_AUTH}
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
 # prevent the reinstallation of vendors at every changes in the source code
 COPY composer.json composer.lock symfony.lock ./
@@ -60,14 +60,14 @@ RUN mkdir -p files
 
 RUN mkdir -p var/cache var/log
 
-VOLUME /var/www/html/var
+VOLUME /srv/app/var
 
 # ---------
 # prod build
 # ---------
 FROM base AS build_prod
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
 RUN composer install --prefer-dist --no-dev --no-scripts --no-progress -v && \
     composer clear-cache
@@ -113,7 +113,7 @@ RUN php bin/console assets:install
 # --------------
 FROM base AS php
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
 RUN ln -sf $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
@@ -121,7 +121,7 @@ RUN ln -sf $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 RUN echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
 RUN echo 'upload_max_filesize = 200 M' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
 
-COPY --from=build_prod /var/www/html /var/www/html
+COPY --from=build_prod /srv/app /srv/app
 RUN chown -R www-data var
 
 # -------------
@@ -129,7 +129,7 @@ RUN chown -R www-data var
 # -------------
 FROM base AS php_dev
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers \
     && cd /tmp && \
@@ -146,7 +146,7 @@ RUN docker-php-ext-enable xdebug
 ARG COMPOSER_AUTH=
 
 COPY phpunit.xml.dist phpstan.neon ./
-COPY --from=build_dev /var/www/html /var/www/html
+COPY --from=build_dev /srv/app /srv/app
 RUN chown -R www-data var
 
 RUN ln -sf $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
@@ -165,9 +165,9 @@ FROM nginx:${NGINX_VERSION}-alpine AS nginx
 
 COPY docker/php/nginx_prod.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
-COPY --from=php /var/www/html/public public/
+COPY --from=php /srv/app/public public/
 
 # ---------------
 # nginx dev image
@@ -176,6 +176,6 @@ FROM nginx:${NGINX_VERSION}-alpine AS nginx_dev
 
 COPY docker/php/nginx_dev.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /var/www/html
+WORKDIR /srv/app
 
-COPY --from=php_dev /var/www/html/public public/
+COPY --from=php_dev /srv/app/public public/

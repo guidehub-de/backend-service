@@ -37,7 +37,7 @@ services:
       PS1: '[guidehub-backend]::$$(pwd) # '
     volumes:
       - php_socket:/var/run/php
-      - ./:/var/www/html
+      - ./:/srv/app
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -50,7 +50,7 @@ services:
     # Comment out this volume in production
     volumes:
       - php_socket:/var/run/php
-      - ./public:/var/www/html/public
+      - ./public:/srv/app/public
     ports:
       - '80:80'
 
