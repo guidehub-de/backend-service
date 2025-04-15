@@ -28,7 +28,7 @@ jobs:
         with:
           extensions: mbstring, xml, ctype, iconv, intl, mysqli, pdo, pdo_mysql, posix, pcntl, mysql
           coverage: 'xdebug'
-          php-version: 8.3
+          php-version: 8.4
         env:
           fail-fast: true
 

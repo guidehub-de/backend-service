@@ -3,7 +3,7 @@ ARG NGINX_VERSION=1.24
 # -------------
 # generic php base image
 # -------------
-FROM php:8.3-fpm-alpine AS generic
+FROM php:8.4-fpm-alpine AS generic
 
 RUN apk update && \
   apk add --no-cache \
@@ -19,7 +19,7 @@ RUN apk add --no-cache libxml2-dev && \
     docker-php-ext-install soap
 
 #RUN docker-php-ext-enable apcu
-COPY --from=composer:2.8.1 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.8.8 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME /var/run/php
 
@@ -135,7 +135,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers \
     && cd /tmp && \
     git clone https://github.com/xdebug/xdebug.git && \
     cd xdebug && \
-    git checkout 3.3.2 && \
+    git checkout 3.4.2 && \
     phpize && \
     ./configure --enable-xdebug && \
     make && \
