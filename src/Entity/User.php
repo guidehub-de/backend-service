@@ -6,8 +6,10 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Repository\UserRepository;
+use App\State\ConfirmUserProcessor;
 use App\State\CreateUserProcessor;
 use Doctrine\ORM\Mapping as ORM;
 use Safe\DateTimeImmutable;
@@ -34,6 +36,15 @@ use Symfony\Component\Validator\Constraints as Assert;
                 ],
             ],
             processor: CreateUserProcessor::class,
+        ),
+        new Patch(
+            uriTemplate: '/users/confirm/{id}',
+            denormalizationContext: [
+                'groups' => [
+                    'user:confirm',
+                ],
+            ],
+            processor: ConfirmUserProcessor::class
         ),
     ],
     normalizationContext: [
@@ -85,7 +96,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private \DateTimeImmutable $updatedAt;
 
-    #[Groups(['user:unconfirmed'])]
+    #[Groups(['user:unconfirmed', 'user:confirm'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $confirmationHash = null;
 
