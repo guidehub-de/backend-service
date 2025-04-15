@@ -31,6 +31,7 @@ security:
     - { path: ^/contexts, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI contexts
     - { path: ^/auth, roles: PUBLIC_ACCESS }
     - { path: ^/users, roles: PUBLIC_ACCESS, methods: [POST] } # Allows user registration
+    - { path: ^/users/confirm, roles: PUBLIC_ACCESS, methods: [PATCH] } # Allows user confirmation
     - { path: ^/mail, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
 
