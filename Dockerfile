@@ -15,9 +15,6 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql posix pcntl intl
 RUN apk add --no-cache libzip-dev zip  \
     && docker-php-ext-install zip
 
-RUN apk add --no-cache libxml2-dev && \
-    docker-php-ext-install soap
-
 #RUN docker-php-ext-enable apcu
 COPY --from=composer:2.8.8 /usr/bin/composer /usr/local/bin/composer
 
